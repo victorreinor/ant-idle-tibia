@@ -1,3 +1,5 @@
+const logWithTimestamp = require('./logWithTimestamp');
+
 class Job {
   constructor(name, interval, action) {
     this.name = name;
@@ -6,7 +8,7 @@ class Job {
   }
 
   start() {
-    console.log(`Iniciando o job: ${this.name}`);
+    logWithTimestamp(`Iniciando o job: ${this.name}`);
     setInterval(async () => {
       try {
         await this.action();

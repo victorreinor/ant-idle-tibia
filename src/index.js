@@ -1,12 +1,7 @@
 const { keyboard, Key, sleep } = require("@nut-tree-fork/nut-js");
 const Job = require('./Job');
 const JobManager = require('./JobManager');
-
-// Função para log com timestamp
-function logWithTimestamp(message) {
-  const timestamp = new Date().toISOString(); // Formato ISO para data e hora
-  console.log(`[${timestamp}] ${message}`);
-}
+const logWithTimestamp = require('./logWithTimestamp');
 
 // Funções específicas de ação
 async function pressSixAction() {
@@ -33,7 +28,7 @@ async function pressCtrlArrowAction() {
 
 // Configuração dos jobs
 const pressSixJob = new Job("Soltar exori gran: Hotkey 6 (30s)", 30 * 1000, pressSixAction);
-const pressCtrlArrowJob = new Job("Anti-idle Ctrl + Arrow (40s)", 14 * 60 * 1000, pressCtrlArrowAction);
+const pressCtrlArrowJob = new Job("Anti-idle Ctrl + Arrow (14min)", 14 * 60 * 1000, pressCtrlArrowAction);
 
 // Gerenciador de jobs
 const jobManager = new JobManager();

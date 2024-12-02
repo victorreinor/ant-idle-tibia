@@ -1,3 +1,5 @@
+const logWithTimestamp = require('./logWithTimestamp');
+
 // Classe para gerenciar e iniciar múltiplos jobs
 class JobManager {
   constructor() {
@@ -9,9 +11,9 @@ class JobManager {
   }
 
   startAll() {
-    console.log("Iniciando todos os jobs...");
+    logWithTimestamp("Iniciando todos os jobs...")
     this.jobs.forEach((job) => job.start());
-    console.log("Todos os jobs foram iniciados.");
+    logWithTimestamp("Todos os jobs foram iniciados.");
   }
 }
 module.exports = JobManager
