@@ -7,7 +7,8 @@
     "automation-script": "./src/index.js"
   },
   "scripts": {
-    "compile": "pkg . --targets node16-linux-x64,node16-macos-x64,node16-win-x64 --output ./bin/automation-script"
+    "compile": "pkg . --targets node16-linux-x64,node16-macos-x64,node16-win-x64 --output ./bin/automation-script",
+    "start": "node ./src/index.js"
   },
   "keywords": [],
   "author": "",
