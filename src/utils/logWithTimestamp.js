@@ -1,6 +1,6 @@
-// Função para log com timestamp
 function logWithTimestamp(message) {
-  const timestamp = new Date().toISOString(); // Formato ISO para data e hora
+  if (!process.env.ENABLE_LOGS ) return
+  const timestamp = new Date().toISOString();
   console.log(`[${timestamp}] ${message}`);
 }
 

@@ -1,10 +1,10 @@
-const logWithTimestamp = require('./logWithTimestamp');
+const { logWithTimestamp } = require('./../utils');
 
 class Job {
   constructor(name, interval, action) {
     this.name = name;
     this.interval = interval;
-    this.action = action; // Função a ser executada
+    this.action = action;
   }
 
   start() {

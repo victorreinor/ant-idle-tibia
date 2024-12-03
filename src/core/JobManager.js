@@ -1,6 +1,5 @@
-const logWithTimestamp = require('./logWithTimestamp');
+const { logWithTimestamp } = require('./../utils');
 
-// Classe para gerenciar e iniciar múltiplos jobs
 class JobManager {
   constructor() {
     this.jobs = [];

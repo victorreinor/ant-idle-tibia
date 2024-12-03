@@ -8,12 +8,13 @@
   },
   "scripts": {
     "compile": "pkg . --targets node16-linux-x64,node16-macos-x64,node16-win-x64 --output ./bin/automation-script",
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js --trace-warnings"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@nut-tree-fork/nut-js": "^4.2.2"
+    "@nut-tree-fork/nut-js": "^4.2.2",
+    "dotenv": "^16.4.5"
   }
 }
