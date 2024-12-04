@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const { keyboard, Key, sleep } = require("@nut-tree-fork/nut-js");
 const { Job, JobManager, DynamicIntervalJob } = require('./core');
-const { logWithTimestamp, generateRandomInterval } = require('./utils')
+const { logWithTimestamp, generateRandomInterval, getRandomArrows, arrowsNames } = require('./utils')
 
 async function pressSixAction() {
   logWithTimestamp("Pressionando a tecla 6");
@@ -13,19 +13,21 @@ async function pressSixAction() {
 }
 
 async function pressCtrlArrowAction() {
-  logWithTimestamp("Executando Ctrl + Right Arrow");
+  const selectedArrows = getRandomArrows();
+  const arrowNamesSelected = selectedArrows.map(key => arrowsNames[key]);
+  
+  logWithTimestamp(`Executando Ctrl com as setas: ${arrowNamesSelected.join(", ")}`);
 
-  await keyboard.pressKey(Key.LeftControl, Key.Right);
-  await sleep(process.env.KEY_PRESS_DELAY);
-  await keyboard.releaseKey(Key.LeftControl, Key.Right);
+  for (const arrow of selectedArrows) {
+    const arrowName = arrowsNames[arrow];
+    logWithTimestamp(`Pressionando Ctrl + ${arrowName}`);
+    await keyboard.pressKey(Key.LeftControl, arrow);
+    await sleep(process.env.KEY_PRESS_DELAY);
+    await keyboard.releaseKey(Key.LeftControl, arrow);
+    logWithTimestamp(`Liberando Ctrl + ${arrowName}`);
+  }
 
-  logWithTimestamp("Executando Ctrl + Left Arrow");
-
-  await keyboard.pressKey(Key.LeftControl, Key.Left);
-  await sleep(process.env.KEY_PRESS_DELAY);
-  await keyboard.releaseKey(Key.LeftControl, Key.Left);
-
-  logWithTimestamp("Rotina Ctrl + Arrow finalizada");
+  logWithTimestamp("Rotina Ctrl + Setas finalizada");
 }
 
 const pressSixJob = new Job("Soltar exori gran: Hotkey 6 (30s)", process.env.PRESS_SIX_INTERVAL, pressSixAction);
