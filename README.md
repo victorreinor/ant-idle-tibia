@@ -1,6 +1,6 @@
 # 🧙‍♂️ Ant Idle Tibia
 
-**Ant Idle Tibia** is a Node.js automation script designed to handle repetitive tasks in the game Tibia. It leverages the power of [nut.js](https://github.com/nut-tree/nut.js) to control mouse and keyboard events and uses [pkg](https://github.com/vercel/pkg) to generate cross-platform executables. 🚀
+**Ant Idle Tibia** is a Node.js automation script designed to handle repetitive tasks in the game **Tibia**. It uses [nut.js](https://github.com/nut-tree/nut.js) to control keyboard and mouse events and [pkg](https://github.com/vercel/pkg) to generate cross-platform executables. 🚀
 
 ---
 
@@ -10,9 +10,18 @@
 .
 ├── bin/                     # Compiled binaries (output directory)
 ├── src/                     # Source code
-│   ├── index.js             # Main entry point
-│   ├── Job.js               # Job handling logic
-│   └── JobManager.js        # Task management system
+│   ├── core/                # Core functionality
+│   │   ├── DynamicIntervalJob.js
+│   │   ├── Job.js
+│   │   ├── JobManager.js
+│   │   └── index.js
+│   ├── utils/               # Utility functions
+│   │   ├── arrowsNames.js
+│   │   ├── generateRandomInterval.js
+│   │   ├── getRandomArrows.js
+│   │   ├── logWithTimestamp.js
+│   │   └── index.js
+│   └── index.js             # Main entry point
 ├── .gitignore               # Git ignored files
 ├── package.json             # Project configuration and dependencies
 └── .nvmrc                   # Recommended Node.js version
@@ -20,13 +29,13 @@
 
 ---
 
-## ✅ Prerequisites
+## ✅ Pre-requisites
 
-Before running the project, ensure you have the following installed:
+Before running the project, make sure you have the following installed:
 
 - **Node.js** (use the version specified in `.nvmrc`)
 - **NPM** or **Yarn**
-- **pkg** (for creating executable files)
+- **pkg** (to create executable files)
 
 ---
 
@@ -57,7 +66,7 @@ npm install -g pkg
 npm run compile
 ```
 
-This will generate the executables inside the `bin/` directory.
+This will generate executables inside the `bin/` directory.
 
 ---
 
@@ -69,7 +78,7 @@ This will generate the executables inside the `bin/` directory.
 node src/index.js
 ```
 
-### Run the Compiled Binary
+### Run the Compiled Executable
 
 #### Linux/macOS:
 ```bash
@@ -85,15 +94,20 @@ bin\automation-script.exe
 
 ## 🔧 Available Scripts
 
-- **`npm run compile`**: Compile the project into cross-platform binaries for Linux, macOS, and Windows.
+- **`npm run compile`**: Compiles the project into cross-platform binaries for Linux, macOS, and Windows.
 
 ---
 
 ## 🌟 Features
 
-- ✨ **Cross-platform binaries**: Works on Linux, macOS, and Windows.
-- ⚙️ **Customizable automation**: Manage repetitive tasks easily.
-- 🚀 **High performance**: Built using Node.js and optimized for gaming automation.
+- ✨ **Anti-idle Automation**: Executes key combinations to prevent automatic disconnection in the game.
+- 🔀 **Dynamic and Random Arrow Keys**: 
+  - On each execution, the script randomly selects **at least two arrow keys** (`Arrow Up`, `Arrow Down`, `Arrow Left`, `Arrow Right`) for `Ctrl` key combinations.
+  - Displays the selected keys in the console (e.g., `Arrow Up, Arrow Right`).
+- ⚡ **Configurable Hotkeys**: Allows customization of keyboard actions, like pressing the `6` key.
+- ⚙️ **Task Management**: Centralized configuration and control of dynamic intervals for automation.
+- 🚀 **High Performance**: Built with Node.js to ensure precision and speed in commands.
+- 💻 **Cross-platform binaries**: Compatible with Linux, macOS, and Windows.
 
 ---
 
@@ -105,10 +119,10 @@ Contributions are welcome! Feel free to open **Issues** or submit **Pull Request
 
 ## 📜 License
 
-This project is licensed under the [ISC License](https://opensource.org/licenses/ISC). See the `LICENSE` file for details.
+This project is licensed under the [ISC License](https://opensource.org/licenses/ISC). See the `LICENSE` file for more details.
 
 ---
 
 ## 📧 Contact
 
-For any inquiries or feedback, feel free to reach out to me via GitHub or open an issue.
+For any inquiries or feedback, feel free to reach out via GitHub or open an issue.
